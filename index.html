@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JobTrack AI</title>
+  <title>Careerly AI</title>
 
   <style>
     * {
@@ -14,109 +14,30 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at top left, #e0f2fe, transparent 35%),
-        radial-gradient(circle at bottom right, #f3e8ff, transparent 30%),
+        radial-gradient(circle at top left, #dbeafe, transparent 35%),
+        radial-gradient(circle at bottom right, #f3e8ff, transparent 35%),
         linear-gradient(135deg, #f8fbff, #ffffff);
       color: #1e293b;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 18px 8%;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(18px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 8px 30px rgba(148,163,184,0.18);
+    .hidden {
+      display: none !important;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #334155;
-      font-weight: 600;
-    }
-
-    .hero {
-      padding: 80px 8%;
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #2563eb, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #475569;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      margin-top: 25px;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 18px;
-      padding: 14px 22px;
-      font-weight: 800;
+    button {
       cursor: pointer;
+      border: none;
       transition: 0.25s;
-      font-size: 15px;
+      font-weight: 800;
     }
 
-    .btn-primary {
-      background: linear-gradient(90deg, #2563eb, #7c3aed);
-      color: white;
-      box-shadow: 0 16px 30px rgba(37,99,235,0.25);
-    }
-
-    .btn-light {
-      background: white;
-      color: #2563eb;
-      border: 1px solid #dbeafe;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .glass-card {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(226,232,240,0.95);
-      border-radius: 32px;
-      box-shadow: 0 22px 55px rgba(100,116,139,0.16);
-      padding: 32px;
+    button:hover {
+      transform: translateY(-2px);
     }
 
     input, select, textarea {
       width: 100%;
-      padding: 14px 16px;
+      padding: 14px;
       margin: 9px 0;
       border-radius: 16px;
       border: 1px solid #dbe3ef;
@@ -130,65 +51,174 @@
       box-shadow: 0 0 0 4px rgba(124,58,237,0.12);
     }
 
-    .full-btn {
+    .btn-primary {
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 18px;
+      box-shadow: 0 14px 28px rgba(37,99,235,0.24);
+    }
+
+    .btn-light {
+      background: white;
+      color: #2563eb;
+      padding: 14px 22px;
+      border-radius: 18px;
+      border: 1px solid #dbeafe;
+    }
+
+    .login-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 7%;
+    }
+
+    .login-hero h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin: 0 0 18px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #2563eb, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-hero p {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #475569;
+    }
+
+    .login-card, .card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #e2e8f0;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 22px 55px rgba(100,116,139,0.16);
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    .sidebar {
+      background: rgba(255,255,255,0.92);
+      border-left: 1px solid #e2e8f0;
+      padding: 28px 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-shadow: 0 10px 35px rgba(148,163,184,0.16);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #2563eb, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .menu button {
       width: 100%;
-      margin-top: 12px;
+      text-align: right;
+      background: transparent;
+      color: #334155;
+      padding: 14px;
+      border-radius: 16px;
+      margin-bottom: 8px;
+      font-size: 15px;
     }
 
-    section {
-      padding: 55px 8%;
+    .menu button.active,
+    .menu button:hover {
+      background: #eef2ff;
+      color: #4f46e5;
     }
 
-    section h2 {
-      font-size: 34px;
-      margin-bottom: 10px;
+    .main {
+      padding: 32px 5%;
     }
 
-    .sub {
-      color: #64748b;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 28px;
-      line-height: 1.7;
     }
 
-    .dashboard {
+    .welcome h2 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .welcome p {
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    .user-pill {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(100,116,139,0.12);
+    }
+
+    .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 22px;
+      margin-bottom: 28px;
     }
 
     .stat {
       background: white;
       border-radius: 26px;
       padding: 26px;
-      box-shadow: 0 16px 35px rgba(100,116,139,0.12);
       border: 1px solid #e2e8f0;
+      box-shadow: 0 16px 35px rgba(100,116,139,0.12);
     }
 
     .stat h3 {
       margin: 0;
-      font-size: 32px;
+      font-size: 34px;
       color: #2563eb;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin: 10px 0 18px;
     }
 
     .jobs {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 26px;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 22px;
     }
 
     .job-card {
       background: white;
       border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 18px 42px rgba(100,116,139,0.14);
+      padding: 24px;
       border: 1px solid #e2e8f0;
+      box-shadow: 0 18px 42px rgba(100,116,139,0.14);
+      transition: 0.3s;
       position: relative;
       overflow: hidden;
-      transition: 0.3s;
     }
 
     .job-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-7px);
     }
 
     .job-card::before {
@@ -202,34 +232,27 @@
       left: -45px;
     }
 
-    .job-card h3 {
+    .job-card h3, .job-card p, .job-card button, .tag, .match {
       position: relative;
-      margin-top: 0;
-      font-size: 22px;
-    }
-
-    .company {
-      font-weight: 800;
-      color: #475569;
     }
 
     .tag {
       display: inline-block;
       background: #eef2ff;
       color: #4f46e5;
-      padding: 7px 14px;
+      padding: 7px 13px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
-      margin: 6px 4px;
+      margin: 5px 3px;
     }
 
     .match {
-      margin: 18px 0;
+      height: 12px;
       background: #e2e8f0;
       border-radius: 999px;
       overflow: hidden;
-      height: 12px;
+      margin: 16px 0;
     }
 
     .match span {
@@ -238,76 +261,53 @@
       background: linear-gradient(90deg, #2563eb, #7c3aed);
     }
 
-    .ai-section {
-      background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(239,246,255,0.95));
-      border-radius: 36px;
-      border: 1px solid #dbeafe;
-      box-shadow: 0 22px 55px rgba(59,130,246,0.16);
-      padding: 38px;
-    }
-
-    .ai-result {
-      margin-top: 20px;
-      background: white;
-      border-radius: 24px;
-      padding: 22px;
-      border: 1px solid #e2e8f0;
-      line-height: 1.8;
-    }
-
-    .tips {
+    .two-cols {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 22px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
     .tip {
-      background: white;
-      border-radius: 26px;
-      padding: 26px;
+      background: #f8fafc;
       border-right: 6px solid #7c3aed;
-      box-shadow: 0 16px 35px rgba(100,116,139,0.12);
-      transition: 0.3s;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
     }
 
-    .tip:hover {
-      transform: translateY(-6px);
+    .alert-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 18px;
+      border-radius: 22px;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
 
-    .tip h3 {
-      color: #2563eb;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px;
-      color: #64748b;
+    .company-chip {
+      display: inline-block;
       background: white;
-      border-top: 1px solid #e2e8f0;
-      margin-top: 40px;
+      border: 1px solid #dbeafe;
+      color: #2563eb;
+      padding: 12px 16px;
+      border-radius: 999px;
+      margin: 6px;
+      font-weight: 800;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    @media(max-width: 850px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .hero {
+    @media(max-width: 900px) {
+      .login-page, .app, .two-cols {
         grid-template-columns: 1fr;
-        padding-top: 45px;
       }
 
-      .hero h1 {
-        font-size: 36px;
+      .sidebar {
+        height: auto;
+        position: relative;
       }
 
-      .hero-actions {
-        flex-direction: column;
+      .login-hero h1 {
+        font-size: 38px;
       }
     }
   </style>
@@ -315,58 +315,43 @@
 
 <body>
 
-<header>
-  <div class="logo">JobTrack AI</div>
-  <nav>
-    <a href="#profile">פרופיל</a>
-    <a href="#dashboard">דשבורד</a>
-    <a href="#jobs">משרות</a>
-    <a href="#ai">AI</a>
-    <a href="#tips">טיפים</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <div>
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+  <div class="login-hero">
     <h1>
-      למצוא את המשרה שמתאימה לך  
-      <span class="gradient-text">בצורה חכמה יותר</span>
+      Careerly AI<br>
+      <span class="gradient">הדשבורד החכם לקריירה שלך</span>
     </h1>
     <p>
-      JobTrack AI מרכז עבורך משרות רלוונטיות לפי ניסיון, תחום, העדפות וקורות חיים.
-      המערכת מאפשרת שמירת חברות מועדפות, קבלת התראות, ושיפור קורות חיים בעזרת עוזר AI אישי.
+      מערכת אינטראקטיבית שמרכזת משרות מותאמות אישית, חברות מועדפות,
+      התראות, טיפים ועוזר AI לשיפור קורות החיים לפי המשרה שאת רוצה.
     </p>
-
-    <div class="hero-actions">
-      <button class="btn btn-primary" onclick="scrollToProfile()">התחילי עכשיו</button>
-      <button class="btn btn-light" onclick="showDemo()">הציגי דמו</button>
-    </div>
+    <button class="btn-light" onclick="fillDemo()">מלאי דמו לדוגמה</button>
   </div>
 
-  <div class="glass-card" id="profile">
-    <h2>יצירת פרופיל אישי</h2>
+  <div class="login-card">
+    <h2>התחברות ויצירת פרופיל</h2>
 
-    <input type="text" id="name" placeholder="שם מלא">
-    <input type="email" id="email" placeholder="אימייל">
+    <input id="name" placeholder="שם מלא">
+    <input id="email" type="email" placeholder="אימייל">
 
-    <select id="role">
-      <option value="">בחרי עיסוק נוכחי</option>
+    <select id="currentRole">
+      <option value="">עיסוק נוכחי</option>
       <option>מנהלת פרויקטים</option>
       <option>אנליסטית</option>
+      <option>סטודנטית</option>
       <option>אבטחת מידע / סייבר</option>
       <option>שיווק</option>
-      <option>פיתוח תוכנה</option>
-      <option>סטודנטית / ללא ניסיון</option>
     </select>
 
-    <select id="field">
+    <select id="wantedField">
       <option value="">תחום שאליו תרצי להיכנס</option>
       <option>Cyber Security</option>
       <option>Project Management</option>
       <option>Product Management</option>
       <option>Data Analysis</option>
-      <option>HR / Recruiting</option>
       <option>Marketing</option>
+      <option>HR / Recruiting</option>
     </select>
 
     <select id="experience">
@@ -387,316 +372,357 @@
       <option>Palo Alto Networks</option>
     </select>
 
-    <input type="file" id="cv">
+    <input type="file" id="cvFile">
 
-    <button class="btn btn-primary full-btn" onclick="createProfile()">
-      התאימי לי משרות
+    <button class="btn-primary" style="width:100%; margin-top:12px;" onclick="loginUser()">
+      כניסה לדשבורד האישי
     </button>
 
-    <p id="profileMessage"></p>
+    <p id="loginMessage"></p>
   </div>
 </div>
 
-<section id="dashboard" class="hidden">
-  <h2>הדשבורד האישי שלך</h2>
-  <p class="sub">כאן תוכלי לראות תמונת מצב מהירה של התאמות, חברות שמורות והמלצות AI.</p>
+<!-- APP PAGE -->
+<div id="appPage" class="app hidden">
 
-  <div class="dashboard">
-    <div class="stat">
-      <h3 id="jobsCount">0</h3>
-      <p>משרות מתאימות</p>
+  <aside class="sidebar">
+    <div class="logo">Careerly AI</div>
+
+    <div class="menu">
+      <button class="active" onclick="showPage('overview', this)">דשבורד ראשי</button>
+      <button onclick="showPage('jobsPage', this)">משרות מותאמות</button>
+      <button onclick="showPage('alertsPage', this)">התראות וחברות</button>
+      <button onclick="showPage('cvPage', this)">עוזר AI לקו״ח</button>
+      <button onclick="showPage('tipsPage', this)">טיפים אישיים</button>
+      <button onclick="logout()">יציאה</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="welcome">
+        <h2 id="welcomeTitle">שלום</h2>
+        <p id="welcomeSub">הדשבורד האישי שלך מוכן.</p>
+      </div>
+      <div class="user-pill" id="userPill">משתמשת</div>
     </div>
 
-    <div class="stat">
-      <h3 id="bestMatch">0%</h3>
-      <p>אחוז התאמה גבוה ביותר</p>
-    </div>
+    <!-- OVERVIEW -->
+    <section id="overview" class="page">
+      <div class="dashboard-grid">
+        <div class="stat">
+          <h3 id="countJobs">0</h3>
+          <p>משרות מתאימות</p>
+        </div>
+        <div class="stat">
+          <h3 id="bestMatch">0%</h3>
+          <p>התאמה גבוהה ביותר</p>
+        </div>
+        <div class="stat">
+          <h3 id="countAlerts">1</h3>
+          <p>חברות להתראות</p>
+        </div>
+        <div class="stat">
+          <h3>AI</h3>
+          <p>קורות חיים חכמים</p>
+        </div>
+      </div>
 
-    <div class="stat">
-      <h3 id="savedCompany">0</h3>
-      <p>חברות מועדפות</p>
-    </div>
+      <div class="two-cols">
+        <div class="card">
+          <h2 class="section-title">המשרות הכי מתאימות לך</h2>
+          <div id="topJobs"></div>
+        </div>
 
-    <div class="stat">
-      <h3>AI</h3>
-      <p>עוזר אישי לשיפור קורות חיים</p>
-    </div>
-  </div>
-</section>
+        <div class="card">
+          <h2 class="section-title">המלצה אישית</h2>
+          <div class="alert-box" id="personalInsight"></div>
+          <p>
+            המערכת מזהה את תחום העניין שלך, שנות הניסיון והחברות המועדפות,
+            ומציגה לך התאמות מדויקות יותר מאתרי דרושים רגילים.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<section id="jobs">
-  <h2>משרות מומלצות עבורך</h2>
-  <p class="sub">המערכת מציגה משרות לפי התחום שבחרת, הניסיון שלך והעדפות הקריירה שלך.</p>
-  <div class="jobs" id="jobsContainer"></div>
-</section>
+    <!-- JOBS -->
+    <section id="jobsPage" class="page hidden">
+      <h2 class="section-title">משרות מותאמות אישית</h2>
+      <div class="jobs" id="jobsContainer"></div>
+    </section>
 
-<section id="ai">
-  <div class="ai-section">
-    <h2>עוזר AI לשיפור קורות החיים</h2>
-    <p class="sub">
-      הדביקי תיאור משרה, והעוזר יציע איך להתאים את קורות החיים שלך כדי להגדיל את הסיכוי שמגייסות יפנו אליך.
-    </p>
+    <!-- ALERTS -->
+    <section id="alertsPage" class="page hidden">
+      <div class="card">
+        <h2 class="section-title">חברות מועדפות והתראות</h2>
+        <p>בחרי חברות שמעניינות אותך, והמערכת תציג התראה כאשר נפתחת משרה מתאימה.</p>
 
-    <textarea id="jobDescription" rows="6" placeholder="הדביקי כאן תיאור משרה..."></textarea>
+        <select id="newCompany">
+          <option value="">בחרי חברה להוספה</option>
+          <option>Microsoft</option>
+          <option>Google</option>
+          <option>Wix</option>
+          <option>CyberArk</option>
+          <option>Monday.com</option>
+          <option>Palo Alto Networks</option>
+        </select>
 
-    <button class="btn btn-primary" onclick="improveCV()">
-      שפרי לי את קורות החיים
-    </button>
+        <button class="btn-primary" onclick="addCompany()">הוספת חברה להתראות</button>
 
-    <div id="aiResult" class="ai-result hidden"></div>
-  </div>
-</section>
+        <h3>החברות שלך:</h3>
+        <div id="companiesList"></div>
 
-<section id="tips">
-  <h2>טיפים חכמים לקריירה</h2>
-  <p class="sub">טיפים קצרים שיעזרו לך להתבלט מול מגייסות ולשפר את תהליך חיפוש העבודה.</p>
+        <h3>התראות לדוגמה:</h3>
+        <div id="alertsList"></div>
+      </div>
+    </section>
 
-  <div class="tips">
-    <div class="tip">
-      <h3>התאמה אישית לכל משרה</h3>
-      <p>אל תשלחי את אותו קובץ לכל המשרות. התאימי את התקציר, הכישורים והניסיון לתיאור המשרה.</p>
-    </div>
+    <!-- CV AI -->
+    <section id="cvPage" class="page hidden">
+      <div class="card">
+        <h2 class="section-title">עוזר AI לשיפור קורות חיים</h2>
+        <p>
+          הדביקי תיאור משרה, והעוזר יציג המלצות לשיפור קורות החיים בהתאם לתפקיד.
+        </p>
 
-    <div class="tip">
-      <h3>מילות מפתח נכונות</h3>
-      <p>שלבי בקורות החיים מילים שמופיעות במשרה: ניהול פרויקטים, מערכות מידע, סייבר, דאטה או מוצר.</p>
-    </div>
+        <textarea id="jobDescription" rows="7" placeholder="הדביקי כאן תיאור משרה..."></textarea>
 
-    <div class="tip">
-      <h3>חברות מועדפות</h3>
-      <p>שמרי חברות שמעניינות אותך וקבלי התראה כאשר נפתחת משרה רלוונטית.</p>
-    </div>
+        <button class="btn-primary" onclick="improveCV()">ניתוח ושיפור קורות חיים</button>
 
-    <div class="tip">
-      <h3>הישגים במקום תיאורים</h3>
-      <p>במקום לכתוב רק “אחראית על”, הדגישי תוצאות, השפעה, פרויקטים ותהליכים שהובלת.</p>
-    </div>
-  </div>
-</section>
+        <div id="aiResult" class="tip hidden"></div>
+      </div>
+    </section>
 
-<footer>
-  <p>© 2026 JobTrack AI | Smart Career Matching Platform</p>
-</footer>
+    <!-- TIPS -->
+    <section id="tipsPage" class="page hidden">
+      <h2 class="section-title">טיפים אישיים לחיפוש עבודה</h2>
+
+      <div class="tip">
+        <h3>התאימי קורות חיים לכל משרה</h3>
+        <p>שני את תקציר הפרופיל ואת הכישורים המרכזיים לפי הדרישות שמופיעות במשרה.</p>
+      </div>
+
+      <div class="tip">
+        <h3>הבליטי הישגים</h3>
+        <p>במקום לכתוב רק תחומי אחריות, כתבי מה הובלת, מה שיפרת ומה הייתה ההשפעה שלך.</p>
+      </div>
+
+      <div class="tip">
+        <h3>שמרי חברות מועדפות</h3>
+        <p>כך לא תפספסי הזדמנויות בחברות שמעניינות אותך במיוחד.</p>
+      </div>
+
+      <div class="tip">
+        <h3>השתמשי במילות מפתח</h3>
+        <p>מערכות סינון מחפשות מילים מתוך תיאור המשרה, לכן חשוב לשלב אותן בקורות החיים.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
 
 <script>
   const jobs = [
-    {
-      title: "Cyber Project Manager",
-      company: "Microsoft",
-      field: "Cyber Security",
-      experience: "1-3 שנים",
-      location: "הרצליה",
-      match: 96,
-      type: "Hybrid"
-    },
-    {
-      title: "Data Protection Specialist",
-      company: "CyberArk",
-      field: "Cyber Security",
-      experience: "1-3 שנים",
-      location: "פתח תקווה",
-      match: 91,
-      type: "Full Time"
-    },
-    {
-      title: "Information Security Analyst",
-      company: "Palo Alto Networks",
-      field: "Cyber Security",
-      experience: "0-1 שנים",
-      location: "תל אביב",
-      match: 86,
-      type: "Hybrid"
-    },
-    {
-      title: "Technical Program Manager",
-      company: "Google",
-      field: "Project Management",
-      experience: "3-5 שנים",
-      location: "תל אביב",
-      match: 93,
-      type: "Full Time"
-    },
-    {
-      title: "Project Manager",
-      company: "Wix",
-      field: "Project Management",
-      experience: "1-3 שנים",
-      location: "תל אביב",
-      match: 89,
-      type: "Hybrid"
-    },
-    {
-      title: "Product Operations Manager",
-      company: "Monday.com",
-      field: "Product Management",
-      experience: "1-3 שנים",
-      location: "תל אביב",
-      match: 88,
-      type: "Full Time"
-    },
-    {
-      title: "Business Analyst",
-      company: "Wix",
-      field: "Data Analysis",
-      experience: "0-1 שנים",
-      location: "תל אביב",
-      match: 84,
-      type: "Junior"
-    },
-    {
-      title: "Marketing Data Analyst",
-      company: "Google",
-      field: "Marketing",
-      experience: "1-3 שנים",
-      location: "תל אביב",
-      match: 82,
-      type: "Hybrid"
-    },
-    {
-      title: "Talent Acquisition Coordinator",
-      company: "Microsoft",
-      field: "HR / Recruiting",
-      experience: "0-1 שנים",
-      location: "הרצליה",
-      match: 80,
-      type: "Entry Level"
-    }
+    { title: "Cyber Project Manager", company: "Microsoft", field: "Cyber Security", experience: "1-3 שנים", location: "הרצליה", match: 96, type: "Hybrid" },
+    { title: "Data Protection Specialist", company: "CyberArk", field: "Cyber Security", experience: "1-3 שנים", location: "פתח תקווה", match: 91, type: "Full Time" },
+    { title: "Information Security Analyst", company: "Palo Alto Networks", field: "Cyber Security", experience: "0-1 שנים", location: "תל אביב", match: 86, type: "Hybrid" },
+    { title: "Technical Program Manager", company: "Google", field: "Project Management", experience: "3-5 שנים", location: "תל אביב", match: 93, type: "Full Time" },
+    { title: "Project Manager", company: "Wix", field: "Project Management", experience: "1-3 שנים", location: "תל אביב", match: 89, type: "Hybrid" },
+    { title: "Product Operations Manager", company: "Monday.com", field: "Product Management", experience: "1-3 שנים", location: "תל אביב", match: 88, type: "Full Time" },
+    { title: "Business Analyst", company: "Wix", field: "Data Analysis", experience: "0-1 שנים", location: "תל אביב", match: 84, type: "Junior" },
+    { title: "Marketing Data Analyst", company: "Google", field: "Marketing", experience: "1-3 שנים", location: "תל אביב", match: 82, type: "Hybrid" },
+    { title: "Talent Acquisition Coordinator", company: "Microsoft", field: "HR / Recruiting", experience: "0-1 שנים", location: "הרצליה", match: 80, type: "Entry Level" }
   ];
 
+  let user = {};
   let favoriteCompanies = [];
 
-  function scrollToProfile() {
-    document.getElementById("profile").scrollIntoView({ behavior: "smooth" });
-  }
-
-  function showDemo() {
+  function fillDemo() {
     document.getElementById("name").value = "מאי";
     document.getElementById("email").value = "may@example.com";
-    document.getElementById("role").value = "מנהלת פרויקטים";
-    document.getElementById("field").value = "Cyber Security";
+    document.getElementById("currentRole").value = "מנהלת פרויקטים";
+    document.getElementById("wantedField").value = "Cyber Security";
     document.getElementById("experience").value = "1-3 שנים";
     document.getElementById("preferredCompany").value = "Microsoft";
-    createProfile();
   }
 
-  function createProfile() {
+  function loginUser() {
     const name = document.getElementById("name").value;
-    const field = document.getElementById("field").value;
+    const email = document.getElementById("email").value;
+    const role = document.getElementById("currentRole").value;
+    const field = document.getElementById("wantedField").value;
     const experience = document.getElementById("experience").value;
     const preferredCompany = document.getElementById("preferredCompany").value;
-    const message = document.getElementById("profileMessage");
+    const message = document.getElementById("loginMessage");
 
-    if (!name || !field || !experience) {
-      message.innerHTML = "נא למלא שם, תחום ושנות ניסיון כדי לקבל התאמה מדויקת.";
+    if (!name || !email || !role || !field || !experience) {
+      message.innerHTML = "נא למלא את כל פרטי הפרופיל לפני כניסה לדשבורד.";
       message.style.color = "#dc2626";
       return;
     }
 
-    if (preferredCompany && !favoriteCompanies.includes(preferredCompany)) {
-      favoriteCompanies.push(preferredCompany);
+    user = { name, email, role, field, experience };
+
+    if (preferredCompany) {
+      favoriteCompanies = [preferredCompany];
     }
 
-    message.innerHTML = `מעולה ${name}! בנינו עבורך פרופיל אישי ומצאנו משרות בתחום ${field}.`;
-    message.style.color = "#16a34a";
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("appPage").classList.remove("hidden");
 
-    displayJobs(field);
-    updateDashboard(field);
-
-    document.getElementById("dashboard").classList.remove("hidden");
-    document.getElementById("dashboard").scrollIntoView({ behavior: "smooth" });
+    buildDashboard();
   }
 
-  function displayJobs(selectedField) {
-    const container = document.getElementById("jobsContainer");
-    container.innerHTML = "";
+  function buildDashboard() {
+    const filtered = getRelevantJobs();
 
-    const filteredJobs = jobs.filter(job => job.field === selectedField);
+    document.getElementById("welcomeTitle").innerText = `שלום ${user.name}, הדשבורד שלך מוכן`;
+    document.getElementById("welcomeSub").innerText = `תחום מבוקש: ${user.field} | ניסיון: ${user.experience}`;
+    document.getElementById("userPill").innerText = user.name;
 
-    if (filteredJobs.length === 0) {
-      container.innerHTML = "<p>לא נמצאו משרות מדויקות כרגע, אבל ניתן להפעיל התראות לחברות מועדפות.</p>";
-      return;
-    }
+    document.getElementById("countJobs").innerText = filtered.length;
+    document.getElementById("bestMatch").innerText = filtered.length ? Math.max(...filtered.map(j => j.match)) + "%" : "0%";
+    document.getElementById("countAlerts").innerText = favoriteCompanies.length;
 
-    filteredJobs.forEach(job => {
-      const card = document.createElement("div");
-      card.className = "job-card";
+    document.getElementById("personalInsight").innerText =
+      `לפי הפרופיל שלך, כדאי להתמקד במשרות בתחום ${user.field} ולחזק את קורות החיים סביב ניסיון של ${user.experience}.`;
 
-      card.innerHTML = `
-        <h3>${job.title}</h3>
-        <p class="company">${job.company}</p>
-        <p><strong>מיקום:</strong> ${job.location}</p>
-        <span class="tag">${job.type}</span>
-        <span class="tag">${job.experience}</span>
-        <span class="tag">התאמה ${job.match}%</span>
+    renderJobs(filtered);
+    renderTopJobs(filtered);
+    renderCompanies();
+    renderAlerts();
+  }
 
-        <div class="match">
-          <span style="width:${job.match}%"></span>
+  function getRelevantJobs() {
+    return jobs.filter(job => job.field === user.field);
+  }
+
+  function renderTopJobs(filtered) {
+    const topJobs = document.getElementById("topJobs");
+    topJobs.innerHTML = "";
+
+    filtered.slice(0, 2).forEach(job => {
+      topJobs.innerHTML += `
+        <div class="alert-box">
+          ${job.title} בחברת ${job.company} — התאמה ${job.match}%
         </div>
-
-        <button class="btn btn-primary full-btn" onclick="saveFavorite('${job.company}')">
-          שמירת חברה להתראות
-        </button>
-
-        <button class="btn btn-light full-btn" onclick="prepareForJob('${job.title}', '${job.company}')">
-          התאמת קורות חיים למשרה
-        </button>
       `;
-
-      container.appendChild(card);
     });
   }
 
-  function updateDashboard(field) {
-    const filteredJobs = jobs.filter(job => job.field === field);
-    const best = filteredJobs.length ? Math.max(...filteredJobs.map(job => job.match)) : 0;
+  function renderJobs(filtered) {
+    const container = document.getElementById("jobsContainer");
+    container.innerHTML = "";
 
-    document.getElementById("jobsCount").innerText = filteredJobs.length;
-    document.getElementById("bestMatch").innerText = best + "%";
-    document.getElementById("savedCompany").innerText = favoriteCompanies.length;
+    if (filtered.length === 0) {
+      container.innerHTML = "<p>לא נמצאו משרות מדויקות כרגע.</p>";
+      return;
+    }
+
+    filtered.forEach(job => {
+      container.innerHTML += `
+        <div class="job-card">
+          <h3>${job.title}</h3>
+          <p><strong>${job.company}</strong></p>
+          <p>מיקום: ${job.location}</p>
+          <span class="tag">${job.type}</span>
+          <span class="tag">${job.experience}</span>
+          <span class="tag">התאמה ${job.match}%</span>
+
+          <div class="match">
+            <span style="width:${job.match}%"></span>
+          </div>
+
+          <button class="btn-primary" onclick="saveCompany('${job.company}')">שמירת חברה</button>
+          <button class="btn-light" onclick="prepareCV('${job.title}', '${job.company}')">התאמת קו״ח</button>
+        </div>
+      `;
+    });
   }
 
-  function saveFavorite(company) {
+  function saveCompany(company) {
     if (!favoriteCompanies.includes(company)) {
       favoriteCompanies.push(company);
     }
 
-    document.getElementById("savedCompany").innerText = favoriteCompanies.length;
-    alert(`החברה ${company} נשמרה כמועדפת. תקבלי התראה כשנפתחת משרה מתאימה.`);
+    renderCompanies();
+    renderAlerts();
+    document.getElementById("countAlerts").innerText = favoriteCompanies.length;
+    alert(`${company} נשמרה להתראות.`);
   }
 
-  function prepareForJob(title, company) {
+  function addCompany() {
+    const company = document.getElementById("newCompany").value;
+
+    if (!company) return;
+
+    saveCompany(company);
+    document.getElementById("newCompany").value = "";
+  }
+
+  function renderCompanies() {
+    const list = document.getElementById("companiesList");
+    list.innerHTML = "";
+
+    favoriteCompanies.forEach(company => {
+      list.innerHTML += `<span class="company-chip">${company}</span>`;
+    });
+  }
+
+  function renderAlerts() {
+    const list = document.getElementById("alertsList");
+    list.innerHTML = "";
+
+    favoriteCompanies.forEach(company => {
+      list.innerHTML += `
+        <div class="alert-box">
+          התראה פעילה: כאשר תיפתח משרה חדשה ב-${company} בתחום ${user.field}, תקבלי עדכון.
+        </div>
+      `;
+    });
+  }
+
+  function prepareCV(title, company) {
+    showPage("cvPage");
     document.getElementById("jobDescription").value =
       `אני רוצה להתאים את קורות החיים שלי למשרת ${title} בחברת ${company}.`;
-    document.getElementById("ai").scrollIntoView({ behavior: "smooth" });
   }
 
   function improveCV() {
     const description = document.getElementById("jobDescription").value;
     const result = document.getElementById("aiResult");
 
+    result.classList.remove("hidden");
+
     if (!description) {
-      result.classList.remove("hidden");
-      result.innerHTML = "<p style='color:#dc2626'>נא להדביק תיאור משרה כדי לקבל המלצות.</p>";
+      result.innerHTML = "נא להדביק תיאור משרה כדי לקבל המלצות.";
       return;
     }
 
-    result.classList.remove("hidden");
     result.innerHTML = `
-      <h3>המלצות AI לשיפור קורות החיים:</h3>
+      <h3>המלצות AI מותאמות:</h3>
       <ul>
-        <li>התאימי את תקציר הפרופיל לתפקיד המבוקש ולחברה שאליה את מגישה.</li>
-        <li>שלבי מילות מפתח מתוך תיאור המשרה כדי לשפר התאמה למערכות סינון קורות חיים.</li>
-        <li>הדגישי ניסיון רלוונטי בניהול פרויקטים, מערכות מידע, אבטחת מידע, דאטה או מוצר.</li>
-        <li>הציגי הישגים מדידים: תהליכים שהובלת, מערכות שהטמעת, שיפור יעילות או צמצום סיכונים.</li>
-        <li>הוסיפי סעיף Skills ממוקד שכולל כלים, מתודולוגיות ותחומים שמופיעים במשרה.</li>
-        <li>הפכי תיאורים כלליים למשפטים מקצועיים שמראים השפעה ותוצאה.</li>
+        <li>התאימי את תקציר הפרופיל לתחום ${user.field}.</li>
+        <li>שלבי מילות מפתח מתוך תיאור המשרה.</li>
+        <li>הדגישי ניסיון רלוונטי לפי שנות הניסיון שלך: ${user.experience}.</li>
+        <li>הציגי הישגים מדידים ולא רק תחומי אחריות.</li>
+        <li>הוסיפי כלים, מערכות ופרויקטים שתומכים בהתאמה למשרה.</li>
       </ul>
     `;
   }
 
-  window.onload = () => {
-    displayJobs("Cyber Security");
-  };
+  function showPage(pageId, btn) {
+    document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
+    document.getElementById(pageId).classList.remove("hidden");
+
+    document.querySelectorAll(".menu button").forEach(button => button.classList.remove("active"));
+    if (btn) btn.classList.add("active");
+  }
+
+  function logout() {
+    document.getElementById("appPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+  }
 </script>
 
 </body>
